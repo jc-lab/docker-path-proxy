@@ -14,4 +14,5 @@ COPY --from=builder ["/work/dist", "/app"]
 
 WORKDIR /app
 
+RUN yarn install --production
 CMD ["node", "app.js"]
