@@ -1,0 +1,16 @@
+defaultBackend:
+  disabled: false
+registries:
+  - path: docker.io
+    endpoint: https://registry-1.docker.io/v2/
+    # skipVerify: true
+    # username: ''
+    # password: ''
+    # passwordRefFile: 'file path'
+    # passwordRefEnv: 'Environment Variable Name'
+    #
+#caCertificates:
+#  - |
+#    -----BEGIN CERTIFICATE-----
+#    ...
+#    -----END CERTIFICATE-----
