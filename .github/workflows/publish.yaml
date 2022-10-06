@@ -32,6 +32,9 @@ jobs:
           password: ${{ secrets.CR_PAT }}
       - run: |
           echo ".git" > .dockerignore
+          echo ".github" > .dockerignore
+          echo "Dockerfile" > .dockerignore
+          echo "chart" > .dockerignore
           cat .gitignore >> .dockerignore
       - name: build and push
         uses: docker/build-push-action@v2
