@@ -17,5 +17,6 @@ COPY --from=builder ["/work/.yarn", "/app/.yarn"]
 WORKDIR /app
 
 RUN yarn workspaces focus --production && \
-    rm -rf .yarn
+    rm -rf .yarn && \
+    touch config.yaml
 CMD ["node", "app.js"]
