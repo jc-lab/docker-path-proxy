@@ -9,6 +9,8 @@ import {DockerPathProxy} from './proxy';
 
   const app = express();
 
+  app.use(express.json());
+
   app.use((req, res, next) => {
     const {ip, method, originalUrl} = req;
     const userAgent = req.get('user-agent') || '';
@@ -23,6 +25,12 @@ import {DockerPathProxy} from './proxy';
     });
 
     next();
+  });
+
+  app.get('/_/health', (req, res) => {
+    res
+      .status(200)
+      .send({status: 'OK'});
   });
 
   app.all('/v2/:subPath(*)', (req, res, next) => {
