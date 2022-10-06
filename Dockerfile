@@ -10,9 +10,12 @@ RUN yarn build
 
 FROM node:16-alpine
 
-COPY --from=builder ["/work/dist", "/app"]
+COPY --from=builder ["/work/dist", "/app/"]
+COPY --from=builder ["/work/package.json", "/work/yarn.lock", "/work/.yarnrc.yml", "/app/"]
+COPY --from=builder ["/work/.yarn", "/app/.yarn"]
 
 WORKDIR /app
 
-RUN yarn install --production
+RUN yarn workspaces focus --production && \
+    rm -rf .yarn
 CMD ["node", "app.js"]
